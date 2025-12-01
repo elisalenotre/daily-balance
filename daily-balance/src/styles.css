@@ -31,6 +31,9 @@ body {
   font-family: var(--font-hand);
   background: radial-gradient(circle at top, #fff7f0 0, var(--bg) 55%);
   color: var(--text-main);
+  
+  background: url('./assets/bg-grid.png') repeat;
+  background-size: 2000px auto;
 }
 
 /* --------- Layout principal --------- */
