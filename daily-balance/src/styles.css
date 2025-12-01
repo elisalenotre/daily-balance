@@ -1,0 +1,392 @@
+/* --------- Base & variables --------- */
+
+:root {
+  --bg: #fff6eb;
+  --bg-soft: #fffaf2;
+  --card: #fffdf8;
+  --border: #f0d7b8;
+  --accent: #4f6b6b;
+  --accent-soft: #f9f3c8;
+  --text-main: #3f2d2a;
+  --text-muted: #8a746f;
+  --radius-lg: 22px;
+  --radius-md: 999px;
+  --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.06);
+}
+
+
+/* reset léger */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Manrope",
+    sans-serif;
+  background: radial-gradient(circle at top, #fff7f0 0, var(--bg) 55%);
+  color: var(--text-main);
+}
+
+/* --------- Layout principal --------- */
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* --------- Header --------- */
+
+.app-header {
+  margin-bottom: 2rem;
+}
+
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 250, 244, 0.9);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.app-title {
+  font-family: "Manrope", sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  margin: 0.8rem 0 0.4rem;
+}
+
+
+.app-subtitle {
+  max-width: 560px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* --------- Header layout + illustration --------- */
+
+.app-header-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 860px) {
+  .app-header-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-illo {
+    align-self: flex-end;
+  }
+}
+
+.hero-illo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.hero-illo-svg {
+  width: 220px;
+  max-width: 40vw;
+}
+
+.hero-illo-img {
+  width: 220px;
+}
+
+.hero-illo-caption {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+
+/* --------- Grille principale --------- */
+
+.app-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 860px) {
+  .app-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------- Cards --------- */
+
+.card {
+  position: relative;
+  background: transparent;
+}
+
+.card-bg {
+  position: absolute;
+  inset: 0;
+  width: 110%;    /* un poil plus grand pour dépasser un peu */
+  height: 110%;
+  transform: translate(-5%, -5%) rotate(-0.5deg); /* léger tilt */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card--stats .card-bg {
+  transform: translate(-3%, -4%) rotate(0.6deg);
+}
+
+.card-inner {
+  position: relative;
+  z-index: 1;
+  padding: 1.6rem 1.75rem;
+}
+
+.card--todo,
+.card--stats {
+  transform: none;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* --------- Form to-do --------- */
+
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 1.4rem;
+}
+
+.todo-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.todo-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.todo-input-text {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 250, 244, 0.9);
+  font-size: 0.9rem;
+}
+
+.todo-input-text::placeholder {
+  color: #c3b5aa;
+}
+
+.todo-radio-group {
+  display: flex;
+  gap: 0.9rem;
+  font-size: 0.9rem;
+}
+
+.todo-radio-group input {
+  margin-right: 0.3rem;
+}
+
+.todo-select {
+  min-width: 150px;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 250, 244, 0.9);
+  font-size: 0.9rem;
+}
+
+/* bouton */
+
+.btn-primary {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  z-index: 1;
+}
+
+.btn-primary .btn-bg {
+  position: absolute;
+  inset: 0;
+  width: 110%;
+  height: 110%;
+  transform: translate(-5%, -5%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.btn-primary:hover .btn-bg {
+  transform: translate(-5%, -5%) scale(1.03);
+  transition: transform 0.3s ease;
+}
+
+.btn-primary span {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* --------- Liste to-do --------- */
+
+.todo-section {
+  margin-top: 0.4rem;
+}
+
+.todo-section-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.todo-empty {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.todo-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.todo-item {
+  margin-bottom: 0.4rem;
+}
+
+.todo-item-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.85);
+  border: 1px dashed rgba(230, 215, 199, 0.9);
+  font-size: 0.9rem;
+}
+
+.todo-item-label.done {
+  opacity: 0.6;
+}
+
+.todo-item-category {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: #353b5a;
+}
+
+/* --------- Stats panel --------- */
+
+.stats-header-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.stats-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.2rem 0 0;
+}
+
+.stat-row {
+  margin-bottom: 0.8rem;
+}
+
+.stat-row-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 0.18rem;
+}
+
+.stat-label {
+  font-weight: 500;
+}
+
+.stat-value {
+  color: var(--text-muted);
+}
+
+/* barre */
+
+.stat-bar-track {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(230, 215, 199, 0.6);
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  width: var(--value, 50%);
+  border-radius: inherit;
+  background: linear-gradient(90deg, #7bb0a8, #f3c472);
+  transition: width 0.3s ease;
+}
+
+/* petite ligne "balance" */
+
+.app-balance-note {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}

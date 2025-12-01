@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { CATEGORY_OPTIONS } from '../statsConfig';
 
+import buttonBg from '../assets/button-bg.svg';
+
 export default function TodoForm({ onAddTodo }) {
   const [label, setLabel] = useState('');
   const [type, setType] = useState('task'); // 'task' ou 'appointment'
@@ -22,62 +24,65 @@ export default function TodoForm({ onAddTodo }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: '1rem' }}>
-      <div style={{ marginBottom: '0.5rem' }}>
-        <label>
-          Intitulé :
-          <input
-            type="text"
-            value={label}
-            onChange={(e) => setLabel(e.target.value)}
-            placeholder="Ex : Appeler le médecin"
-            style={{ marginLeft: '0.5rem' }}
-          />
-        </label>
+    <form onSubmit={handleSubmit} className="todo-form">
+      <div className="todo-form-row">
+        <span className="todo-label">Intitulé</span>
+        <input
+          type="text"
+          value={label}
+          onChange={(e) => setLabel(e.target.value)}
+          placeholder="Ex : Appeler le médecin"
+          className="todo-input-text"
+        />
       </div>
 
-      <div style={{ marginBottom: '0.5rem' }}>
-        <span>Type : </span>
-        <label style={{ marginRight: '1rem' }}>
-          <input
-            type="radio"
-            name="todoType"
-            value="task"
-            checked={type === 'task'}
-            onChange={() => setType('task')}
-          />
-          Tâche
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="todoType"
-            value="appointment"
-            checked={type === 'appointment'}
-            onChange={() => setType('appointment')}
-          />
-          Rendez-vous
-        </label>
+      <div className="todo-form-row">
+        <span className="todo-label">Type</span>
+        <div className="todo-radio-group">
+          <label>
+            <input
+              type="radio"
+              name="todoType"
+              value="task"
+              checked={type === 'task'}
+              onChange={() => setType('task')}
+            />
+            Tâche
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="todoType"
+              value="appointment"
+              checked={type === 'appointment'}
+              onChange={() => setType('appointment')}
+            />
+            Rendez-vous
+          </label>
+        </div>
       </div>
 
-      <div style={{ marginBottom: '0.5rem' }}>
-        <label>
-          Catégorie :
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            style={{ marginLeft: '0.5rem' }}
-          >
-            {CATEGORY_OPTIONS.map((cat) => (
-              <option key={cat.value} value={cat.value}>
-                {cat.label}
-              </option>
-            ))}
-          </select>
-        </label>
+      <div className="todo-form-row">
+        <span className="todo-label">Catégorie</span>
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="todo-select"
+        >
+          {CATEGORY_OPTIONS.map((cat) => (
+            <option key={cat.value} value={cat.value}>
+              {cat.label}
+            </option>
+          ))}
+        </select>
       </div>
 
-      <button type="submit">Ajouter</button>
+      <div>
+        <button className="btn-primary">
+            <img src={buttonBg} aria-hidden="true" className="btn-bg" />
+            <span>Ajouter à la journée</span>
+        </button>
+      </div>
     </form>
   );
 }

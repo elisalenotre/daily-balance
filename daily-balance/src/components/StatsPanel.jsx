@@ -9,40 +9,25 @@ export default function StatsPanel({ stats }) {
     ['money', 'Argent'],
   ];
 
-  const barContainerStyle = {
-    height: '10px',
-    width: '100%',
-    backgroundColor: '#eee',
-    borderRadius: '999px',
-    overflow: 'hidden',
-    marginTop: '0.25rem',
-  };
-
-  const barFillStyle = (value) => ({
-    height: '100%',
-    width: `${value}%`,
-    backgroundColor: '#333',
-    transition: 'width 0.3s ease',
-  });
-
   return (
     <div>
-      <h2>Stats de la journée</h2>
-      <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
+      <p className="stats-header-note">
+        Les valeurs vont de 0 à 100. L’objectif : éviter que stress & fatigue montent
+        trop, sans laisser la joie et le relax descendre.
+      </p>
+
+      <ul className="stats-list">
         {entries.map(([key, label]) => (
-          <li key={key} style={{ marginBottom: '0.75rem' }}>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                fontSize: '0.95rem',
-              }}
-            >
-              <strong>{label}</strong>
-              <span>{stats[key]}</span>
+          <li key={key} className="stat-row">
+            <div className="stat-row-top">
+              <span className="stat-label">{label}</span>
+              <span className="stat-value">{stats[key]}</span>
             </div>
-            <div style={barContainerStyle}>
-              <div style={barFillStyle(stats[key])} />
+            <div className="stat-bar-track">
+              <div
+                className="stat-bar-fill"
+                style={{ '--value': `${stats[key]}%` }}
+              />
             </div>
           </li>
         ))}

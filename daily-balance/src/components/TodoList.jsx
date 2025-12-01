@@ -3,21 +3,25 @@ export default function TodoList({ todos, onCompleteTodo }) {
   const tasks = todos.filter((t) => t.type === 'task');
 
   return (
-    <div>
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h3>Rendez-vous</h3>
-        {appointments.length === 0 && <p>Aucun rendez-vous pour l’instant.</p>}
-        <ul>
+    <div className="todo-section">
+      <section>
+        <h3 className="todo-section-title">Rendez-vous</h3>
+        {appointments.length === 0 && (
+          <p className="todo-empty">Aucun rendez-vous pour l’instant.</p>
+        )}
+        <ul className="todo-list">
           {appointments.map((todo) => (
             <TodoItem key={todo.id} todo={todo} onCompleteTodo={onCompleteTodo} />
           ))}
         </ul>
       </section>
 
-      <section>
-        <h3>Tâches</h3>
-        {tasks.length === 0 && <p>Aucune tâche pour l’instant.</p>}
-        <ul>
+      <section style={{ marginTop: '1rem' }}>
+        <h3 className="todo-section-title">Tâches</h3>
+        {tasks.length === 0 && (
+          <p className="todo-empty">Aucune tâche pour l’instant.</p>
+        )}
+        <ul className="todo-list">
           {tasks.map((todo) => (
             <TodoItem key={todo.id} todo={todo} onCompleteTodo={onCompleteTodo} />
           ))}
@@ -32,23 +36,23 @@ function TodoItem({ todo, onCompleteTodo }) {
     if (!todo.done) {
       onCompleteTodo(todo.id);
     }
-    // On ne permet pas de décocher pour ne pas "retirer" les stats
   };
 
   return (
-    <li style={{ marginBottom: '0.25rem' }}>
-      <label style={{ opacity: todo.done ? 0.6 : 1 }}>
+    <li className="todo-item">
+      <label
+        className={
+          'todo-item-label' + (todo.done ? ' done' : '')
+        }
+      >
         <input
           type="checkbox"
           checked={todo.done}
           onChange={handleChange}
           disabled={todo.done}
-          style={{ marginRight: '0.5rem' }}
         />
-        {todo.label}{' '}
-        <span style={{ fontSize: '0.85rem', color: '#666' }}>
-          ({todo.category})
-        </span>
+        <span>{todo.label}</span>
+        <span className="todo-item-category">{todo.category}</span>
       </label>
     </li>
   );
