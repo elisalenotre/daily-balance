@@ -5,7 +5,7 @@ export const INITIAL_STATS = {
   joy: 30,
   relax: 20,
   focus: 10,
-  hygiene: 50,
+  hygiene: 10,
   money: 50,
 };
 
@@ -64,6 +64,7 @@ export const CATEGORY_OPTIONS = [
   { value: 'sortie', label: 'Sortie' },
   { value: 'hygiene', label: 'Hygiène' },
   { value: 'menage', label: 'Ménage' },
+  { value: 'aucune', label: 'Aucune' },
 ];
 
 // Helper pour appliquer les effets d'une catégorie à l'état de stats

@@ -33,7 +33,7 @@ body {
   color: var(--text-main);
   
   background: url('./assets/bg-grid.png') repeat;
-  background-size: 2000px auto;
+  background-size: 600px auto;
 }
 
 /* --------- Layout principal --------- */
@@ -74,11 +74,10 @@ body {
   font-family: var(--font-hand);
   font-size: 2.6rem;
   font-weight: 800;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.03em;
   line-height: 1.05;
   margin: 0.8rem 0 0.4rem;
 }
-
 
 .app-subtitle {
   max-width: 560px;
