@@ -1,30 +1,38 @@
-import { useEffect, useRef } from "react";
-import musicFile from "../assets/bg-music.mp3";
+import { useEffect, useRef } from 'react';
 
-export default function BackgroundMusic() {
+export default function BackgroundMusic({ src }) {
   const audioRef = useRef(null);
 
   useEffect(() => {
     const audio = audioRef.current;
+    if (!audio) return;
 
-    const playMusic = () => {
+    const tryPlay = () => {
       audio.play().catch(() => {});
     };
 
-    document.addEventListener("click", playMusic, { once: true });
+    // lecture après la première interaction utilisateur
+    document.addEventListener('click', tryPlay, { once: true });
 
     return () => {
-      document.removeEventListener("click", playMusic);
+      document.removeEventListener('click', tryPlay);
     };
   }, []);
+
+  // si la source change → on recharge et on relance
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.load();
+    audio.play().catch(() => {});
+  }, [src]);
 
   return (
     <audio
       ref={audioRef}
-      src={musicFile}
+      src={src}
       loop
-      volume={0.5}
-      style={{ display: "none" }}
+      style={{ display: 'none' }}
     />
   );
 }
