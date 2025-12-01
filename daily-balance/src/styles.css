@@ -289,6 +289,8 @@ body {
 }
 
 .todo-item {
+  display: flex;
+  align-items: center;
   margin-bottom: 0.4rem;
 }
 
@@ -301,6 +303,29 @@ body {
   background: rgba(255, 250, 244, 0.85);
   border: 1px dashed rgba(230, 215, 199, 0.9);
   font-size: 0.9rem;
+}
+
+/* bouton “x” */
+.todo-delete {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  color: #c39b8c;
+  padding: 0.1rem 0.35rem;
+  margin: 0 0 0 0.6rem;
+  border-radius: 999px;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.todo-delete:hover {
+  background: rgba(195, 155, 140, 0.16);
+  transform: translateY(-1px);
+}
+
+.todo-delete:active {
+  transform: translateY(0);
 }
 
 .todo-item-label.done {

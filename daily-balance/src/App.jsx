@@ -46,6 +46,10 @@ function App() {
     });
   };
 
+  function handleDeleteTodo(id) {
+  setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  }
+
   return (
     <>
       <BackgroundMusic />
@@ -65,7 +69,7 @@ function App() {
                 </div>
 
                 <TodoForm onAddTodo={handleAddTodo} />
-                <TodoList todos={todos} onCompleteTodo={handleCompleteTodo} />
+                <TodoList todos={todos} onCompleteTodo={handleCompleteTodo} onDeleteTodo={handleDeleteTodo} />
 
                 <div className="todo-mascot">
                   <CuteIllustration />

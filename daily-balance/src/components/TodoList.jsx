@@ -1,4 +1,4 @@
-export default function TodoList({ todos, onCompleteTodo }) {
+export default function TodoList({ todos, onCompleteTodo, onDeleteTodo }) {
   const appointments = todos.filter((t) => t.type === 'appointment');
   const tasks = todos.filter((t) => t.type === 'task');
 
@@ -11,7 +11,12 @@ export default function TodoList({ todos, onCompleteTodo }) {
         )}
         <ul className="todo-list">
           {appointments.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} onCompleteTodo={onCompleteTodo} />
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              onCompleteTodo={onCompleteTodo}
+              onDeleteTodo={onDeleteTodo}
+            />
           ))}
         </ul>
       </section>
@@ -23,7 +28,12 @@ export default function TodoList({ todos, onCompleteTodo }) {
         )}
         <ul className="todo-list">
           {tasks.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} onCompleteTodo={onCompleteTodo} />
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              onCompleteTodo={onCompleteTodo}
+              onDeleteTodo={onDeleteTodo}
+            />
           ))}
         </ul>
       </section>
@@ -31,7 +41,7 @@ export default function TodoList({ todos, onCompleteTodo }) {
   );
 }
 
-function TodoItem({ todo, onCompleteTodo }) {
+function TodoItem({ todo, onCompleteTodo, onDeleteTodo }) {
   const handleChange = () => {
     if (!todo.done) {
       onCompleteTodo(todo.id);
@@ -40,11 +50,7 @@ function TodoItem({ todo, onCompleteTodo }) {
 
   return (
     <li className="todo-item">
-      <label
-        className={
-          'todo-item-label' + (todo.done ? ' done' : '')
-        }
-      >
+      <label className={'todo-item-label' + (todo.done ? ' done' : '')}>
         <input
           type="checkbox"
           checked={todo.done}
@@ -54,6 +60,15 @@ function TodoItem({ todo, onCompleteTodo }) {
         <span>{todo.label}</span>
         <span className="todo-item-category">{todo.category}</span>
       </label>
+
+      <button
+        type="button"
+        className="todo-delete"
+        onClick={() => onDeleteTodo(todo.id)}
+        aria-label="Supprimer cette tâche"
+      >
+        ×
+      </button>
     </li>
   );
 }
