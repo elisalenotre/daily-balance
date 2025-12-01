@@ -41,27 +41,21 @@ function App() {
       <div className="app-shell">
         {/* Header */}
       <header className="app-header">
-        <div className="app-header-layout">
-          <div>
-            <div className="app-badge">
-              <span> Mimio &amp; Popi veillent sur ta journée</span>
-            </div>
-            <h1 className="app-title">Daily Balance</h1>
-            <p className="app-subtitle">
-              Ajoute tes tâches et rendez-vous, coche-les, et laisse le tableau de bord
-              t&apos;indiquer si ta journée tire trop sur le stress, la fatigue ou la joie.
-            </p>
-          </div>
-          <CuteIllustration />
-        </div>
-      </header>
+  <div className="app-badge">
+    <span>MIMIO &amp; POPI VEILLENT SUR TA JOURNÉE</span>
+  </div>
+  <h1 className="app-title">Daily Balance</h1>
+  <p className="app-subtitle">
+    Ajoute tes tâches et rendez-vous, coche-les, et laisse le tableau de bord
+    t&apos;indiquer si ta journée tire trop sur le stress, la fatigue ou la joie.
+  </p>
+</header>
 
         {/* Grille principale */}
         <main className="app-grid">
-          {/* Colonne gauche : To-do */}
 <section className="card card--todo">
   <img src={cardTodo} alt="" aria-hidden="true" className="card-bg" />
-  <div className="card-inner">
+  <div className="card-inner card-inner--todo">
     <div className="card-header">
       <h2 className="card-title">To-do du jour</h2>
       <span className="card-tag">routines & rendez-vous</span>
@@ -69,8 +63,14 @@ function App() {
 
     <TodoForm onAddTodo={handleAddTodo} />
     <TodoList todos={todos} onCompleteTodo={handleCompleteTodo} />
+
+    {/* Mimio & Popi, en bas de la card */}
+    <div className="todo-mascot">
+      <CuteIllustration />
+    </div>
   </div>
 </section>
+
 
 {/* Colonne droite : Stats */}
 <aside className="card card--stats">

@@ -81,48 +81,6 @@ body {
   color: var(--text-muted);
 }
 
-/* --------- Header layout + illustration --------- */
-
-.app-header-layout {
-  display: flex;
-  justify-content: space-between;
-  gap: 2.5rem;
-  align-items: flex-start;
-}
-
-@media (max-width: 860px) {
-  .app-header-layout {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .hero-illo {
-    align-self: flex-end;
-  }
-}
-
-.hero-illo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.hero-illo-svg {
-  width: 220px;
-  max-width: 40vw;
-}
-
-.hero-illo-img {
-  width: 220px;
-}
-
-.hero-illo-caption {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-
 /* --------- Grille principale --------- */
 
 .app-grid {
@@ -167,6 +125,24 @@ body {
 .card--todo,
 .card--stats {
   transform: none;
+}
+
+/* Conteneur de Mimio & Popi dans la card */
+.todo-mascot {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.todo-mascot {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 0.8rem;
+  pointer-events: none;
+}
+
+.todo-mascot .hero-illo-img {
+  width: 160px;
 }
 
 .card-header {
