@@ -1,43 +1,58 @@
 // Les stats de base pour la journée
 export const INITIAL_STATS = {
-  fatigue: 50,
-  stress: 50,
-  joy: 50,
-  relax: 50,
-  focus: 50,
+  fatigue: 30,
+  stress: 20,
+  joy: 30,
+  relax: 20,
+  focus: 10,
   hygiene: 50,
   money: 50,
 };
 
 // Effets des catégories sur les stats
 export const CATEGORY_EFFECTS = {
+  // Grosse activité "obligation"
   travail: {
-    stress: +10,
+    stress: +12,
     fatigue: +10,
-    focus: +10,
+    focus: +15,
+    joy: -4,
+    relax: -5,
   },
+  etudes: {
+    stress: +10,
+    fatigue: +8,
+    focus: +18,
+    joy: -3,
+    relax: -4,
+  },
+
+  // Activités plaisir
   loisir: {
     joy: +15,
     relax: +10,
+    stress: -5,
+    fatigue: -2,
   },
   sortie: {
-    joy: +15,
-    relax: +10,
-    fatigue: +5,
-    money: -15,
+    joy: +18,
+    relax: +12,
+    fatigue: +8,
+    stress: -3,
+    money: -20,
   },
+
+  // Self-care / maison
   hygiene: {
-    hygiene: +20,
+    hygiene: +25,
     joy: +5,
+    relax: +3,
+    fatigue: +2,
   },
   menage: {
-    fatigue: +5,
     hygiene: +15,
-  },
-  etudes: {
-    stress: +8,
-    fatigue: +8,
-    focus: +12,
+    fatigue: +5,
+    stress: -2,
   },
 };
 
