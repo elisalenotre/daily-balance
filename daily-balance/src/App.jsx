@@ -41,9 +41,6 @@ function App() {
       <div className="app-shell">
         {/* Header */}
       <header className="app-header">
-  <div className="app-badge">
-    <span>MIMIO &amp; POPI VEILLENT SUR TA JOURNÉE</span>
-  </div>
   <h1 className="app-title">Daily Balance</h1>
   <p className="app-subtitle">
     Ajoute tes tâches et rendez-vous, coche-les, et laisse le tableau de bord
@@ -82,11 +79,7 @@ function App() {
     </div>
 
     <StatsPanel stats={stats} />
-
-    <p className="app-balance-note">
-      Astuce : Pour éviter de te surmener, pense à intégrer des moments de self-care
-      et des petits plaisirs pour mieux équilibrer ta journée. Bonne journée !
-    </p>
+    
   </div>
 </aside>
         </main>
